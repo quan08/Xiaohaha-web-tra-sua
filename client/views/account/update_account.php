@@ -149,7 +149,7 @@ define('WP_DEBUG_DISPLAY', false);
                             </div>
                             <div class="row image">
                                 Ảnh <br>
-                                <input type="file" value="<?php echo $row['hinh_anh'] ?>" name="image">
+                                <input type="file" value="<?php echo $row['hinh_anh'] ?>" required name="image">
                                 <img src = "<?php echo '/duan1-nhom7/public/image/'.$row['hinh_anh'];?>"style="width: 160px; height: 147px; position: relative; top: 35px;" /></td>
                             </div>
 
