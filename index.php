@@ -51,18 +51,11 @@ switch ($url) {
         require_once './client/business/account.php';
         update_user();
         break;
-
         // Controller Admin
     case 'cp-admin':
         require_once './admin/business/dashboard.php';
         quanel();
         break;
-    case 'tai-khoan':
-        require_once './admin/business/dashboard.php';
-        edit_user();
-        break;
-
-
     case 'list-tk':
         require_once './client/business/taikhoan.php';
         danhsach_tk();

@@ -70,7 +70,7 @@
                                             <span>
                                                 <?php echo $rows['email'] ?>
                                             </span>
-                                        </td>
+                                        </td>=
                                         <td class="pl-3 email">
                                             <span>
                                                 <?php echo $rows['sdt'] ?>

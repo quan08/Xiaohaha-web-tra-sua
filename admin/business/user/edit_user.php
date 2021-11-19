@@ -5,15 +5,12 @@ if (isset($_GET['ID'])) {
     foreach (selectDb("SELECT * FROM tai_khoan WHERE ID = '$id'") as $row) {
         $name = isset($row['ten_taikhoan']) ? $row['ten_taikhoan'] : '';
         $password = isset($row['mat_khau']) ? $row['mat_khau'] : '';
-        // $images_user = isset($row['image_user']) ? $row['image_user'] : '';
         $phone = isset($row['sdt']) ? $row['sdt'] : '';
         $email = isset($row['email']) ? $row['email'] : '';
-        $role = isset($row['vai_tro']) ? $row['vai_tro'] : '';
-        // $active = isset($row['active']) ? $row['active'] : '';
+        $role = isset($row['vai_tro']) ? $row['vai_tro'] : '';    
     }
     if (isset($_POST['updateuser'])) {
         $name_new = isset($_POST['name']) ? $_POST['name'] : $name;
-        //$images_user_new = isset($_POST['image']) ? $_POST['image'] : $images_url;
         $phone_new = isset($_POST['phone']) ? $_POST['phone'] : $phone;
         $email_new = isset($_POST['email']) ? $_POST['email'] : $email;
         $pass_new = isset($_POST['password']) ? $_POST['password'] : $password;
@@ -23,6 +20,7 @@ if (isset($_GET['ID'])) {
         action("UPDATE tai_khoan SET ten_taikhoan='$name_new', sdt='$phone_new',email= '$email_new',mat_khau='$pass_new',vai_tro='$role_new' WHERE ID = '$id'");
         header("Location:http://localhost/duan1-nhom7/tai-khoan");
     }
+    
 } else {
     header("Location:http://localhost/duan1-nhom7/tai-khoan");
 }
@@ -112,12 +110,12 @@ if (isset($_GET['ID'])) {
                     <br>
                     <label for="exampleInputEmail1">
                         Vai trò
-                    </label> 
+                    </label>
                     <br>
                     <select name="role" value="<?= $role ?>" style="padding:0px 20px;background:#cdcdcd;">
                         <option value="0">Admin</option>
                         <option value="1">khách hàng</option>
-                    </select> <br> 
+                    </select> <br>
                     <br>
                     <label for="exampleInputEmail1">
                         Images

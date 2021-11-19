@@ -89,13 +89,34 @@ function register()
 
 function update_user()
 {
+
     if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
-        $id = "4";
-        $name_new = $_POST['ten_taikhoan'];;
+        $name_new = $_POST['ten_taikhoan'];
         $phone_new = $_POST['sdt'];
         $email_new = $_POST['email'];
-        action("UPDATE tai_khoan SET ten_taikhoan='$name_new', sdt='$phone_new',email= '$email_new' WHERE ID = '$id'");
-        header("Location:http://localhost/duan1-nhom7/trang-chu");
+        $pass_new = $_POST['mat_khau'];
+        if (isset($_FILES['image'])) {
+            $image_name = $_FILES['image']['name'];
+            $image_size = $_FILES['image']['size'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            $image_type = $_FILES['image']['type'];
+            $image_ext = strtolower(end(explode('.', $_FILES['image']['name'])));
+            $expensions = array('jpeg', 'jpg', 'png');
+            if (in_array($image_ext, $expensions) === false) {
+                $errors[] = "Ảnh không đúng định dạng";
+            }
+            if ($image_size > 8000000) {
+                $errors[] = "Kích cỡ vượt quá cho phép";
+            }
+            if (empty($errors) == true) {
+                move_uploaded_file($image_tmp, "public/image/" . $image_name);
+                action("UPDATE tai_khoan SET ten_taikhoan='$name_new',hinh_anh = '$image_name', sdt='$phone_new',email= '$email_new', mat_khau = '$pass_new' WHERE mat_khau = '$pass_new'");
+                header('location: dang-nhap');//đăng nhập chưa có nên sẽ là 404
+            }
+        } else {
+            action("UPDATE tai_khoan SET ten_taikhoan='$name_new', sdt='$phone_new',email= '$email_new', mat_khau = '$pass_new' WHERE mat_khau = '$pass_new'");
+            header('location: trang-chu');
+        }
     }
-    client_render('account/cap_nhat.php');
+    client_render('account/update_account.php');
 }
