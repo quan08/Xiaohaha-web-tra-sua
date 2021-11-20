@@ -62,20 +62,20 @@ h1{
         <h1>Thêm tài khoản</h1>
     </div>
     <div class="form">
-         <form action="" method="post">
-             <div class="row">
-                Tên Đăng nhập <br> <input type="text" name="name">
-             </div>
-             <div class="row">
-                Mật Khẩu <br><input type="text" name="password" >
-             </div>
-             <div class="row">
+        <form action="" method="post">
+            <div class="row">
                 Email <br> <input type="text" name="email" id="" >
-             </div>    
-             <div class="button">
-             <input  type="submit" name="dang-ky" value="Đăng Ký">
+            </div>  
+            <div class="row">
+                Mật Khẩu <br><input type="text" name="password" >
+            </div>
+              
+            <div class="row">
+                Họ Và Tên <br> <input type="text" name="name">
+            </div>
+            <div class="button">
+            <input  type="submit" name="dang-ky" value="Đăng Ký">
                 <button class="btn" type="reset">Nhập Lại</button>
-             </div>
-
+            </div>
          </form>
     </div>
