@@ -1,4 +1,4 @@
-<div class="container">
+<div class="form">
     <h3>Đăng nhập và trở thành thành viên của Xiao Haha</h3>
     <form action="<?= ACCOUNT_URL . 'luu-dang-nhap' ?>" method="post">
         <div class="a">
@@ -28,7 +28,7 @@
     </form>
 </div>
 <style>
-    .container {
+    .form {
         max-width: 1400px;
         margin: auto;
         background-color: #f8f8f8;
