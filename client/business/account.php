@@ -93,7 +93,8 @@ function reset_password()
     }
 }
 
-function login(){
+function login()
+{
     $loginToken = isset($_COOKIE['remember_login']) ? $_COOKIE['remember_login'] : "";
     if ($loginToken != "") {
         $now = new DateTime();
@@ -103,20 +104,20 @@ function login(){
                                     from accounts 
                                     where remember_token = '$loginToken'
                                     and remember_expire >= '$currentTime'";
-    
+
         $user = executeQuery($getUserByRememberToken, false);
-    
+
         if ($user['role'] == 1) {
             unset($user['password']);
             $_SESSION['auth'] = $user;
-            header('location:'. ACCOUNT_URL .'khach-hang');
+            header('location:' . ACCOUNT_URL . 'khach-hang');
             die;
         } else if ($user['role'] == 2) {
             unset($user['password']);
             $_SESSION['auth'] = $user;
-            header('location:'. ACCOUNT_URL .'nhan-vien' );
+            header('location:' . ACCOUNT_URL . 'nhan-vien');
             die;
-        }else if ($user['role'] == 5) {
+        } else if ($user['role'] == 5) {
             unset($user['password']);
             $_SESSION['auth'] = $user;
             header('location:' . ADMIN_URL);
@@ -127,72 +128,73 @@ function login(){
 
     client_render('account/login.php');
 }
-function post(){
+function post()
+{
     date_default_timezone_set('Asia/Ho_Chi_Minh');
-    
+
     $email = $_POST['email'];
     $password = $_POST['password'];
     $remember = $_POST['remember'];
-    
+
     $getUserByEmail = "select * from accounts where email = '$email'";
     $user = executeQuery($getUserByEmail, false);
-    
-    if($user && password_verify($password, $user['password'])){
-        if($remember == 1){
+
+    if ($user && password_verify($password, $user['password'])) {
+        if ($remember == 1) {
             $remember_token = sha1(uniqid() . $user['email']);
-    
+
             $expireObj = new DateTime("+3 minutes");
             $expireTime = $expireObj->format("Y-m-d H:i:s");
-            
+
             setcookie('remember_login', $remember_token, time() + (10), '/');
-            
+
             $updateRememberQuery = "update accounts 
                                     set 
                                         remember_token = '$remember_token', 
                                         remember_expire = '$expireTime'
                                     where id = " . $user['id'];
-            executeQuery($updateRememberQuery, false);        
+            executeQuery($updateRememberQuery, false);
         }
-    
-        if($user['role']==1){
+
+        if ($user['role'] == 1) {
             unset($user['password']);
             $_SESSION['auth'] = $user;
-            header('location:'. ACCOUNT_URL .'khach-hang');
+            header('location:' . ACCOUNT_URL . 'khach-hang');
             die;
-        }else if($user['role']==2){
+        } else if ($user['role'] == 2) {
             unset($user['password']);
             $_SESSION['auth'] = $user;
-            header('location:'. ACCOUNT_URL .'nhan-vien' );
+            header('location:' . ACCOUNT_URL . 'nhan-vien');
             die;
-        }else if($user['role']==5){
+        } else if ($user['role'] == 5) {
             unset($user['password']);
             $_SESSION['auth'] = $user;
-            header('location:'. ADMIN_URL );
+            header('location:' . ADMIN_URL);
             die;
-        }else{
-            header('location:'. ACCOUNT_URL);
-    
+        } else {
+            header('location:' . ACCOUNT_URL);
         }
     }
-    header('location:'. ACCOUNT_URL);
-    }
+    header('location:' . ACCOUNT_URL);
+}
 // guest- thử dữ liệu truyền đi sau khi đăng nhập thành công
-function guest(){
+function guest()
+{
     client_render('account/staff/guest.php');
 }
-function staff(){
+function staff()
+{
     client_render('account/staff/staff.php');
 }
 //Đăng ký
 function register()
-    {
-        if(isset($_POST['dang-ky'])&&($_POST['dang-ky'])){
-            $name =$_POST['name'];
-            $password =$_POST['password'];
-            $email =$_POST['email'];
-            $sql = "INSERT INTO accounts(email,name,password) values('$email','$name','$password')";
-            pdo_execute($sql);
+{
+    if (isset($_POST['dang-ky']) && ($_POST['dang-ky'])) {
+        $name = $_POST['name'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        $sql = "INSERT INTO accounts(email,name,password) values('$email','$name','$password')";
+        pdo_execute($sql);
     }
-        client_render('account/register.php');
-    }
-    
+    client_render('account/register.php');
+}
