@@ -50,29 +50,23 @@ switch ($url) {
         require_once './client/business/account.php';
         reset_password();
         break;
-        // login
-    case 'dang-nhap':
+    case 'tai-khoan/dang-ky':
         require_once './client/business/account.php';
-        login();
+        register();
         break;
-    case 'dang-nhap/luu-dang-nhap':
-        require_once './client/business/account.php';
-        post();
+    case 'tai-khoan/dia-chi':
+        require_once './client/business/address.php';
+        address(21);
         break;
-        // 
 
-        // staff- thử dữ liệu truyền đi sau khi login thành công
-    case 'dang-nhap/nhan-vien':
-        require_once './client/business/account.php';
-        staff();
+    case 'tai-khoan/chinh-sua-dia-chi':
+        require_once './client/business/address.php';
+        edit_address($_GET['id']);
         break;
-    case 'dang-nhap/khach-hang':
-        require_once './client/business/account.php';
-        guest();
+    case 'tai-khoan/del-address':
+        require_once './client/business/address.php';
+        delete_address_one($_GET['dellid']);
         break;
-    // 
-
-
 
         // Controller Admin
     case 'cp-admin':
@@ -96,6 +90,22 @@ switch ($url) {
         cate_save_add();
         break;
 
+        //Manager address
+
+    case 'cp-admin/tai-khoan/users':
+        require_once './admin/business/users.php';
+        account_index(1);
+        break;
+
+    case 'cp-admin/tai-khoan/staff':
+        require_once './admin/business/users.php';
+        account_index(2);
+        break;
+
+    case 'cp-admin/tai-khoan/edit_staff':
+        require_once './admin/business/users.php';
+        edit_staff($_GET['id']);
+        break;
     default:
         include_once './client/views/404.php';
         break;
