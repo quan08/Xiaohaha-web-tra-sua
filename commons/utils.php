@@ -35,4 +35,3 @@ function delAll($nameTable, $key, $listDel)
         executeQuery($query, true);
     }
 }
-
