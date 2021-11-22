@@ -94,7 +94,7 @@
                             </div>
 
                             <div class="header__top__right__auth">
-                                <a href="tai-khoan/dang-nhap"><i class="fa fa-user"></i> Đăng nhập</a>
+                                <a href="<?= BASE_URL ?>tai-khoan/dang-nhap"><i class="fa fa-user"></i> Đăng nhập</a>
                             </div>
                         </div>
                     </div>
