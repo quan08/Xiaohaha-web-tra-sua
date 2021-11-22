@@ -5,14 +5,14 @@ function address($ma_kh)
 {
     $sqlQuery = "select * from address where ma_kh = $ma_kh";
     $address = executeQuery($sqlQuery, true);
-    client_render('address/index.php', compact('address'), 'admin-assets/custom/admin-global.js');
+    client_render('address/index.php', compact('address'), '');
 }
 
 function edit_address($id)
 {
     $sqlQuery = "select * from address where id = $id";
     $address = executeQuery($sqlQuery, true);
-    client_render('address/edit.php', compact('address') );
+    client_render('address/edit.php', compact('address'));
 }
 function delete_address_one($dellid)
 {
@@ -38,5 +38,3 @@ function edit($id, $name, $call, $address, $note)
     echo header("refresh:0; url = $_SERVER[HTTP_REFERER]");
     exit();
 }
-
-?>
