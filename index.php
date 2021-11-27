@@ -36,6 +36,20 @@ switch ($url) {
         require_once './client/business/contact.php';
         contact();
         break;
+        // Manager address 
+    case 'tai-khoan/dia-chi':
+        require_once './client/business/address.php';
+        address(4);
+        break;
+
+    case 'tai-khoan/chinh-sua-dia-chi':
+        require_once './client/business/address.php';
+        edit_address($_GET['id']);
+        break;
+    case 'tai-khoan/xoa-dia-chi':
+        require_once './client/business/address.php';
+        delete_address_one($_GET['dellid']);
+        break;
 
         // controller tài khoản
     case 'tai-khoan':
@@ -57,6 +71,12 @@ switch ($url) {
     case 'tai-khoan/dang-ky':
         require_once './client/business/account.php';
         register();
+        break;
+
+        // dat hang
+    case 'data.php':
+        require_once './client/business/cart.php';
+        creat_cart(2342, $_GET['productName'], $_GET['quantity'], $_GET['size'], $_GET['productId'], $_GET['productImage'], $_GET['sugar'], $_GET['ice'], $_GET['toppingIP'], $_GET['priceProOpt']);
         break;
 
         // Controller Admin
@@ -81,6 +101,25 @@ switch ($url) {
         cate_save_add();
         break;
 
+        // tai khoan
+    case 'cp-admin/tai-khoan/khach-hang':
+        require_once './admin/business/users.php';
+        account_index(1);
+        break;
+
+    case 'cp-admin/tai-khoan/nhan-vien':
+        require_once './admin/business/users.php';
+        account_index(2);
+        break;
+
+    case 'cp-admin/tai-khoan/chinh-sua':
+        require_once './admin/business/users.php';
+        edit_account($_GET['id']);
+        break;
+    case 'cp-admin/tai-khoan/del':
+        require_once './admin/business/users.php';
+        delete_account_one($_GET['dellid']);
+        break;
     default:
         include_once './client/views/404.php';
         break;

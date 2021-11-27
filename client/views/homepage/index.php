@@ -24,3 +24,7 @@
 
 <?php include_once './client/views/layouts/blog.php'; ?>
 <!-- Blog Section End -->
+
+<!-- Form_option start -->
+<?php include_once "./client/views/layouts/form_option.php" ?>
+<!-- Form_option end -->

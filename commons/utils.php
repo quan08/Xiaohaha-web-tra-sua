@@ -27,3 +27,11 @@ function admin_render($view, $data = [], $jsFile = null)
     $view = './admin/views/' . $view;
     include_once "./admin/views/layouts/main.php";
 }
+
+function delAll($nameTable, $key, $listDel)
+{
+    for ($i = 0; $i < count($listDel); $i++) {
+        $query = "DELETE from $nameTable where $key = '$listDel[$i]'";
+        executeQuery($query, true);
+    }
+}

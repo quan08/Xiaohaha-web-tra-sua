@@ -86,18 +86,19 @@
                 </div>
                 <div class="row">
                     <?php if (!empty($products)) : ?>
-                        <?php foreach ($products as $product) : ?>
+                        <?php foreach ($products as $k => $product) : ?>
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="<?= CLIENT_ASSET ?>img/product/sp1.jpg">
+                                    <div class="product_id" style="display: none;"><?php echo $product['id'] ?></div>
+                                    <div id="value_image" class="product__item__pic set-bg" data-setbg="<?= CLIENT_ASSET ?>img/product/sp1.jpg">
                                         <ul class="product__item__pic__hover">
                                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a id="btn_cart" data-toggle="modal" data-target="#modal-lg" index="<?php echo $k ?>"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
-                                        <h6><a href="#"><?= $product['name'] ?></a></h6>
-                                        <h5><?= number_format($product['price'], 0, '', ',') ?>đ</h5>
+                                        <h6><a id="value_name"><?php echo $product['name'] ?></a></a></h6>
+                                        <h5 data="<?php echo $product['price'] ?>" id="value_price"><?= number_format($product['price'], 0, '', ',') ?>đ</h5>
                                     </div>
                                 </div>
                             </div>
@@ -145,3 +146,7 @@
     </div>
 </section>
 <!-- Product Section End -->
+
+<!-- Form_option start -->
+<?php include_once "./client/views/layouts/form_option.php" ?>
+<!-- Form_option end -->
