@@ -66,7 +66,7 @@ function pro_save_add()
 function pro_fix()
 {
 
-    admin_render('product/fix-form.php', [], 'admin-assets/custom/admin-global.js');
+    admin_render('product/update-form.php', [], 'admin-assets/custom/admin-global.js');
 }
 
 function pro_save_fix()
