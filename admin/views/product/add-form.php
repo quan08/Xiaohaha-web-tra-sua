@@ -44,14 +44,6 @@ $cates = executeQuery($getBDQuery, true);
                         </div>
 
                         <div class="form-group">
-                            <label for="">Thời gian tạo</label>
-                            <?php if (isset($_GET['create_at-err'])) : ?>
-                                <p style="color: red;margin-bottom:2px"><?= $_GET['create_at-err']; ?></p>
-                            <?php endif ?>
-                            <input type="datetime-local" name="create_at" class="form-control" placeholder="" aria-describedby="helpId">
-                        </div>
-
-                        <div class="form-group">
                             <div class="form-check">
                                 <input class="form-check-input" id="status" name="status" value="1" type="checkbox">
                                 <label class="form-check-label" for="show_menu">Hiển thị sản phẩm ra menu</label>

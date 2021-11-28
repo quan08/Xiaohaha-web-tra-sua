@@ -26,12 +26,13 @@ function pro_add_form()
 }
 function pro_save_add()
 {
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $create_at = date(" Y-m-d h:i:s ");
 
     $name = $_POST['name'];
     $thumbnail = $_FILES['thumbnail'];
     $price = $_POST['price'];
     $cate_id = $_POST['cate_id'];
-    $create_at = $_POST['create_at'];
     $status = isset($_POST['status']) ? 1 : 0;
     $filename = "";
 
@@ -45,9 +46,6 @@ function pro_save_add()
     }
     if (empty($price)) {
         $errors .= "price-err=Hãy nhập giá sản phẩm&";
-    }
-    if (empty($create_at)) {
-        $errors .= "create_at-err=Hãy nhập ngày tạo sản phẩm&";
     }
     $errors = rtrim($errors, '&');
     if (strlen($errors) > 0) {
@@ -81,12 +79,12 @@ function pro_save_fix()
         header('location'.ADMIN_URL . 'san-pham' .'?msg' .'sản phẩm không tồn tại');
         die;
     }
-
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+    $update_at = date(" Y-m-d h:i:s ");
     $name = $_POST['name'];
     $price = $_POST['price'];
     $status = $_POST['status'];
     $cate_id = $_POST['cate_id'];
-    $update_at = $_POST['update_at'];
     $imageValue = $products['thumbnail'];
     $thumbnail = $_FILES['thumbnail'];
 

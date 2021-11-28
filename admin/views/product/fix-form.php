@@ -56,16 +56,6 @@ if (!$products) {
                         </div>
 
                         <div class="form-group">
-                            <label for="">Thời gian sửa</label>
-                            <!-- chua hiểu -->
-                            <?php if (isset($_GET['update_at-err'])) : ?>
-                                <p style="color: red;margin-bottom:2px"><?= $_GET['update_at-err']; ?></p>
-                            <?php endif ?>
-                            <!-- chưa hiểu -->
-                            <input type="datetime-local" name="update_at" value="<?= $products['update_at'] ?>" class="form-control" placeholder="" aria-describedby="helpId">
-                        </div>
-
-                        <div class="form-group">
                             <div class="form-check">
                                 <input class="form-check-input" id="status" name="status" value="1" type="checkbox">
                                 <label class="form-check-label" for="status">Hiển thị sản phẩm ra menu</label>

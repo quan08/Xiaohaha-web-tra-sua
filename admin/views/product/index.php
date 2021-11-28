@@ -1,6 +1,6 @@
 <?php
- $getBDQuery = "SELECT * from categories";
- $cates = executeQuery($getBDQuery, true);
+$getBDQuery = "SELECT * from categories";
+$cates = executeQuery($getBDQuery, true);
 
 ?>
 <div class="row">
@@ -19,26 +19,26 @@
                     <thead>
                         <th>ID</th>
                         <th>Tên sản phẩm</th>
-                        <th>Ảnh sản phẩm</th>
+                        <th>Ảnh</th>
                         <th>Giá</th>
                         <th>Số lượt thích</th>
                         <th>Hiển thị </th>
-                        <th>Thuộc danh mục</th>
+                        <th>Danh mục</th>
                         <th>Thời gian tạo</th>
                         <th>Thời gian sửa</th>
                         <th>
-                            <a href="<?= ADMIN_URL . 'san-pham/tao-moi'?>" class="btn btn-sm btn-success">Tạo mới</a>
+                            <a href="<?= ADMIN_URL . 'san-pham/tao-moi' ?>" class="btn btn-sm btn-success">Tạo mới</a>
                         </th>
                     </thead>
                     <tbody>
-                        <?php foreach($products as $index => $item): ?>
+                        <?php foreach ($products as $index => $item) : ?>
                             <tr>
                                 <td><?= $index + 1 ?></td>
                                 <td><?= $item['name'] ?></td>
                                 <td>
-                                    <img src="<?= $item['thumbnail'] ?>" width="100px" height="100px">
+                                    <img style="display: block;max-width:70px;max-height:70px;width: auto;height: auto;" src="<?= $item['thumbnail'] ?>">
                                 </td>
-                                <td><?= $item['price'] ?></td>
+                                <td><?= number_format($item['price'], 0, '', ',') ?></td>
                                 <td><?= $item['favorites'] ?></td>
                                 <td><?= $item['status'] == 1 ? "Có" : "Không" ?></td>
                                 <td>
@@ -54,15 +54,15 @@
                                 <td><?= $item['update_at'] ?></td>
 
                                 <td>
-                                    <a href="<?= ADMIN_URL . 'san-pham/sua?id='. $item['id'] ?>" class="btn btn-sm btn-info">
+                                    <a href="<?= ADMIN_URL . 'san-pham/sua?id=' . $item['id'] ?>" class="btn btn-sm btn-info">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="javascript:;" onclick="confirm_remove('<?= ADMIN_URL . 'san-pham/xoa?id='. $item['id'] ?>', '<?= $item['name']?>','sản phẩm tên:')" class="btn btn-sm btn-danger">
+                                    <a href="javascript:;" onclick="confirm_remove('<?= ADMIN_URL . 'san-pham/xoa?id=' . $item['id'] ?>', '<?= $item['name'] ?>','sản phẩm tên:')" class="btn btn-sm btn-danger">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>
-                        <?php endforeach?>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
