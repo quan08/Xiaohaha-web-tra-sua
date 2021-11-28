@@ -96,7 +96,14 @@
                             </div>
 
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Đăng nhập</a>
+                            <?php if(isset($_SESSION['auth']) && $_SESSION['auth'] != null):?>
+                                   <div style="display:flex; justify-content:flex-end; min-width:100px">
+                                  <a style="margin-right:30px" href=""><i class="fa fa-user"></i><?= $_SESSION['auth']['name'] ?> </a>
+                                    <a href="<?= BASE_URL . 'tai-khoan/dang-xuat'?>">Đăng xuất</a>
+                                   </div>
+                            <?php else: ?>
+                                <a href="<?= BASE_URL ?>tai-khoan/dang-nhap"> Đăng nhập</a>
+                                <?php endif ?>
                             </div>
                         </div>
                     </div>
@@ -148,20 +155,19 @@
                             <span>Danh Mục</span>
                         </div>
                         <ul>
-                            <li><a href="#">Sản Phẩm Nổi Bật</a></li>
-                            <li><a href="#">Trà Sữa</a></li>
-                            <li><a href="#">Fresh Fruit Tea</a></li>
-                            <li><a href="#">Machito</a></li>
-                            <li><a href="#">Trà Đào</a></li>
-                            <li><a href="#">Sữa Chua Dẻo</a></li>
+                        <?php
+                        $listdanhmuc = loadall_danhmuc();
+                        ?>
+                        <?php foreach($listdanhmuc as $danhmuc):?>
+                                    <li><a href="<?= BASE_URL . 'san-pham?id-danhmuc=' . $danhmuc['id']?>"><?=$danhmuc['name']?></a></li>
+                        
+                        <?php endforeach;?>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <?php search_product();
-                            ?>
                             <form action="<?= BASE_URL ?>san-pham" method="get">
                                 <input type="text" name="keyword" value="<?= $keyword = '' ?>" placeholder="Bạn cần tìm sản phẩm...">
                                 <button type="submit" class="site-btn">Tìm Kiếm</button>

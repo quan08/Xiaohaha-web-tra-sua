@@ -7,7 +7,7 @@ require_once './commons/utils.php';
 require_once './mail/index.php';
 require_once './dao/system_dao.php';
 require_once './client/business/product.php';
-
+require_once './client/business/categories.php';
 
 // dd($url);
 switch ($url) {
@@ -22,9 +22,14 @@ switch ($url) {
 
         // controller Product
     case 'san-pham':
+        if (isset($_GET['id-danhmuc']) && ($_GET['id-danhmuc'] > 0)) {
+            $cate_id = $_GET['id-danhmuc'];
+            $products = loadall_product_by_categories($cate_id);
+        } else {
+            product_index();
+        }
+
         require_once './client/business/product.php';
-        // list_product();
-        search_product();
         break;
 
     case 'tin-tuc':
@@ -58,6 +63,18 @@ switch ($url) {
     case 'tai-khoan/dang-ky':
         require_once './client/business/account.php';
         register();
+        break;
+    case 'tai-khoan/dang-nhap':
+        require_once './client/business/account.php';
+        login();
+        break;
+    case 'tai-khoan/dang-xuat':
+        require_once './client/business/account.php';
+        logout();
+        break;
+    case 'tai-khoan/luu-dang-nhap':
+        require_once './client/business/account.php';
+        post();
         break;
 
         // Controller Admin
