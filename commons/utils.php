@@ -35,7 +35,7 @@ function getFavoriteProducts(){
     $getFavoriteProductQuery = "select * from favorite_products where user_id = $userId";
     $favoriteProducts = executeQuery($getFavoriteProductQuery, true);
     return $favoriteProducts;
-
+}
 function delAll($nameTable, $key, $listDel)
 {
     for ($i = 0; $i < count($listDel); $i++) {
