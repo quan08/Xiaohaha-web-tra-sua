@@ -22,6 +22,7 @@
     <link rel="shortcut icon" href="<?= CLIENT_ASSET ?>img/logo-small.png">
     <link rel="stylesheet" href="<?= ADMIN_ASSET ?>plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
+
 </head>
 
 
@@ -138,6 +139,8 @@
                                         <?php endif ?>
                                     </span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="gio-hang"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                     </div>
                 </div>

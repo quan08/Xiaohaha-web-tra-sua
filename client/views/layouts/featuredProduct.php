@@ -1,3 +1,16 @@
+<?php
+
+if (isset($_SESSION['auth']['id'])) {
+    $check_login = "data-target='#modal-lg'";
+    $log = "";
+} else {
+    $log = "swalDefaultWarning";
+    $check_login = "";
+    $check_login = "";
+}
+
+
+?>
 <section class="featured spad">
     <div class="container">
         <div class="row">
@@ -29,3 +42,6 @@
         </div>
     </div>
 </section>
+<!-- Form_option start -->
+<?php include_once "./client/views/layouts/form_option.php" ?>
+<!-- Form_option end -->

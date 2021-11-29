@@ -24,3 +24,12 @@
 
 <?php include_once './client/views/layouts/blog.php'; ?>
 <!-- Blog Section End -->
+
+
+
+
+<!-- check login dạt hang -->
+
+<!-- logmes star -->
+
+<!-- logmes end -->
