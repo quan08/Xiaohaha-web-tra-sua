@@ -134,5 +134,4 @@ function updatestatusOrder($id, $status)
 {
     $sqlQuery = "Update oder set status = $status where id = $id";
     executeQuery($sqlQuery, false);
-
 }
