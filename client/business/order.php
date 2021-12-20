@@ -181,3 +181,17 @@ function getnameUser($id)
     $result = executeQuery($sqlQuery, true);
     return $result[0]['name'];
 }
+
+function queryCart($id)
+{
+    $sqlQuery = "select * from cart where id = $id ";
+    $result = executeQuery($sqlQuery, true);
+    return $result[0];
+}
+
+function queryProduct($id)
+{
+    $sqlQuery = "select * from products where id = $id ";
+    $result = executeQuery($sqlQuery, true);
+    return $result[0];
+}
