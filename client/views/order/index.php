@@ -52,20 +52,20 @@ if (count($order) > 0) {
                                 ?>
                                     <tr>
 
-                                        <td>
+                                        <td style="text-align: left;">
                                             <?php
                                             for ($l = 0; $l < count($oder_detail); $l++) {
-                                                echo '- '. queryProduct(queryCart($oder_detail[$l]['cart_id'])['product_id'])['name'];
+                                                echo '- ' . queryProduct(queryCart($oder_detail[$l]['cart_id'])['product_id'])['name'];
                                             ?>.
-                                                <br>
-                                            <?php
+                                            <br>
+                                        <?php
                                             }
-                                            ?>
+                                        ?>
                                         </td>
                                         <td id="price" class="shoping__cart__price">
                                             <?= number_format($order[$i]['total'], 0, '', ',') . 'đ' ?>
                                         </td>
-                                        <td  class="">
+                                        <td class="">
                                             <?= $order[$i]['created_at'] ?>
 
                                         </td>
