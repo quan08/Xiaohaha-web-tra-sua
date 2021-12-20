@@ -213,7 +213,7 @@ function getNamefeedbBy($id)
 function sendEmailOrder($id, $email)
 {
     $url_feedback_order = BASE_URL . "don-hang-chi-tiet?id=$id";
-    $title = "Đơn hàng #$id đã được giao thành công";
+    $title = "XIAOHAHA đơn hàng #$id đã được giao thành công";
     $content = "Cảm ơn quý khách đã tin tưởng và ủng hộ trà sữa <b>XIAOHAHA</b> <br>";
     $content .= "Quý khách có thể click <a href='$url_feedback_order'> Tại đây</a> để đánh giá sản phẩm của đơn hàng #$id";
     sendEmail($title, $content, $email);

@@ -70,7 +70,7 @@ if (isset($_POST['commentNostar'])) {
                                 <tr>
                                     <th class="shoping__product">Trà sữa</th>
                                     <th class="">Thêm topping</th>
-                                    <th class="">lựa chọn khác</th>
+                                    <th class="">Lựa chọn khác</th>
                                     <th>Giá</th>
                                     <th style="text-align: center;width: 100px;">Số lượng</th>
                                     <th>Thành tiền</th>
@@ -99,7 +99,7 @@ if (isset($_POST['commentNostar'])) {
                                         <td id="price" class="shoping__cart__price">
                                             <?php echo number_format($oder_detail[$j]['price_product'] + priceOption($cart[0]['id']), 0, '', ',') . "đ"  ?>
                                         </td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <?= $cart[0]['quantity'];  ?>
                                         </td>
                                         <td id="total" class="shoping__cart__total">
