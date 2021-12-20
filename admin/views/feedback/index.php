@@ -27,7 +27,7 @@
                                 <td id="price">
                                     <?php for ($j = 0; $j < $feedback[$i]['star']; $j++) {
                                     ?>
-                                        <i style="color: yellow;" class="fas fa-star"></i>
+                                        <i style="color: #ffa400    ;" class="fas fa-star"></i>
                                     <?php
                                     } ?>
                                 </td>
