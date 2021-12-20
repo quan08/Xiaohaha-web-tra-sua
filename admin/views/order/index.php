@@ -21,8 +21,8 @@
                 <div class="card-body">
                     <table class="table tabl-stripped">
                         <thead>
-                            <th class="shoping__product col-1">Stt </th>
-                            <th class="col-2">Số lượng trà sữa</th>
+                            <th class="shoping__product col-1">Người mua</th>
+                            <th class="col-2">Ảnh đại diện</th>
                             <th class="col-2">Tổng tiền hóa đơn</th>
                             <th col="col-2">Tạo lúc</th>
                             <th col="col-2">Trạng thái</th>
@@ -47,11 +47,12 @@
 
                             ?>
                                 <tr>
+                                    <?php $ue = getNameUseraOrder($order[$i]['user_id']); ?>
                                     <td class="">
-                                        <?= $i + 1  ?>
+                                        <?= $ue[0]['name'] ?>
                                     </td>
                                     <td>
-                                        <?= count($oder_detail) . ' cốc' ?>
+                                        <img style="width: 50px;" src="<?= IMG_URL. $ue[0]['avatar'] ?>" alt="">
                                     </td>
                                     <td id="price">
                                         <?= number_format($order[$i]['total'], 0, '', ',') . 'đ' ?>
@@ -88,3 +89,4 @@
             </div>
         </div>
     </div>
+   
