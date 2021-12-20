@@ -17,6 +17,7 @@ if (isset($_POST[$returnSubmit])) {
 }
 if (isset($_POST['commentNostar'])) {
     feedback($_GET['id'], $_POST['starValue'], $_POST['commentNostar'], $_SESSION['auth']['id']);
+    sendEmailFeedback($_GET['id'], $_SESSION['emailUser']);
     header("refresh:0;");
     exit();
 }
@@ -41,6 +42,8 @@ if (isset($_POST['commentNostar'])) {
     if ($order_detail[$i]['status'] != 5) {
         $oder_detail = (queryOrderDetail($order_detail[$i]['id']));
         $carts = queryCartId($oder_detail);
+        $user = getNameUseraOrder($order_detail[0]['user_id']);
+        $_SESSION['emailUser'] = $user[0]['email'];
     }
 
     if (isset($_POST['status'])) {
@@ -48,6 +51,7 @@ if (isset($_POST['commentNostar'])) {
         updatestatusOrder($id, $_POST['status']);
         if ($_POST['status'] == 3) {
             updatepoints($_POST['user_id'], $_POST['total']);
+            sendEmailOrder($id, $_SESSION['emailUser']);
         }
         $id = $_GET['id'];
         echo header("refresh:0; url =?id=$id&updateSuccess");

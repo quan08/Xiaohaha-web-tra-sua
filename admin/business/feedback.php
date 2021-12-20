@@ -14,3 +14,12 @@ function checkFeedB($id)
     $result = executeQuery($sqlQuery, false);
     return $result;
 }
+function sendEmailFeedback($id, $email)
+{
+    // dd($email);
+    $url_feedback_order = BASE_URL . "don-hang-chi-tiet?id=$id";
+    $title = "Trả lời từ Xiaohaha của đơn hàng #$id";
+    $content = "Cảm ơn quý khách đã tin tưởng và ủng hộ trà sữa <b>XIAOHAHA</b> <br>";
+    $content .= "Quý khách có thể click <a href='$url_feedback_order'> Tại đây</a> để xem phản hồi của Xiaohaha";
+    sendEmail($title, $content, $email);
+};
