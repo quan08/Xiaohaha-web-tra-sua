@@ -82,10 +82,13 @@ function pro_save_fix()
     $update_at = date(" Y-m-d H:i:s ");
     $name = $_POST['name'];
     $price = $_POST['price'];
-    $status = $_POST['status'];
+
     $cate_id = $_POST['cate_id'];
     $imageValue = $products['thumbnail'];
     $thumbnail = $_FILES['thumbnail'];
+    $status = isset($_POST['status']) ? 1 : 0;
+
+
 
     $errors = "";
     if (empty($update_at)) {
@@ -101,7 +104,7 @@ function pro_save_fix()
     if ($thumbnail['size'] > 0) {
         $imageValue = uniqid() . '-' . $thumbnail['name'];
         move_uploaded_file($thumbnail['tmp_name'], './public/uploads/' . $imageValue);
-        $imageValue = BASE_URL . 'public/uploads/' . $imageValue;
+        // $imageValue = $imageValue;
     }
 
 
@@ -113,6 +116,7 @@ function pro_save_fix()
                             cate_id = '$cate_id',
                             update_at = '$update_at'
                     where id = $id";
+    // dd($updateUserQuery);
     executeQuery($updateUserQuery);
     header('location:' . ADMIN_URL . 'san-pham');
 }

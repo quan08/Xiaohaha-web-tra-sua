@@ -31,11 +31,11 @@ if (!$products) {
                             <div>
                                 <label for="">Ảnh</label>
                                 <br>
-                                <input style="width:600px; margin-bottom:20px" type="file" name="thumbnail" placeholder="" aria-describedby="helpId" >
+                                <input style="width:600px; margin-bottom:20px" type="file" name="thumbnail" placeholder="" aria-describedby="helpId">
                             </div>
                             <?php if ($products['thumbnail'] != "") : ?>
                                 <div>
-                                    <img src="<?= $products['thumbnail'] ?>" width="100px" height="100px">
+                                    <img src="<?= IMG_URL . $products['thumbnail'] ?>" width="100px" height="100px">
                                 </div>
                             <?php endif ?>
 
@@ -48,7 +48,7 @@ if (!$products) {
 
                         <div class="form-group">
                             <label for="">Danh mục sản phẩm</label>
-                            <select name="cate_id" value="<?= $products['cate_id'] ?>" class="form-control" placeholder="" aria-describedby="helpId" >
+                            <select name="cate_id" value="<?= $products['cate_id'] ?>" class="form-control" placeholder="" aria-describedby="helpId">
                                 <?php foreach ($cates as $u => $c) : ?>
                                     <option value="<?= $c['id'] ?>"><?= $c['name'] ?></option>
                                 <?php endforeach ?>

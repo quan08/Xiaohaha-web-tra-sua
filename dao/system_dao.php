@@ -100,19 +100,11 @@ function pdo_select($sql)
     return $result;
 }
 
-function returnId($sqL)
+function returnId($sql)
 {
-
-    // Tạo kết nối
-    $conn = new PDO("mysql:host=localhost;dbname=2021-duan1-nhom7", 'root', '');
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Câu SQL Insert
-    $sql = $sqL;
-
-    // Thực hiện thêm record
-    $conn->exec($sql);
-
-    $last_id = $conn->lastInsertId();
-    return $last_id;
+    $connect = pdo_get_connection();
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $id = $connect->lastInsertId();
+    return $id;
 }

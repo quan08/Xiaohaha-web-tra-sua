@@ -1,7 +1,4 @@
 <?php
-require "./mail/PHPMailer/src/Exception.php";
-require "./mail/PHPMailer/src/PHPMailer.php";
-require "./mail/PHPMailer/src/SMTP.php";
 
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function

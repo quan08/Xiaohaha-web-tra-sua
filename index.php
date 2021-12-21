@@ -4,13 +4,17 @@ ob_start();
 $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : "/";
 
 require_once './commons/utils.php';
-require_once './mail/index.php';
 require_once './dao/system_dao.php';
 require_once './client/business/product.php';
 require_once './client/business/categories.php';
 require_once './client/business/blog.php';
 require_once './carbon/autoload.php';
 require_once './admin/business/feedback.php';
+require_once "./mail/PHPMailer/src/Exception.php";
+require_once "./mail/PHPMailer/src/PHPMailer.php";
+require_once "./mail/PHPMailer/src/SMTP.php";
+require_once "./mail/index.php";
+
 
 // dd($url);
 
