@@ -168,7 +168,7 @@ function clickpoints() {
 
 function PointsDown(flag) {
   if (flag == "true") {
-    totalcart.innerText =0;
+    totalcart.innerText = 0;
   } else {
     var result = totalcart.innerText.replace(",", "");
     result = result.replace(",", "");
@@ -222,6 +222,13 @@ function Buy() {
       titleError.innerHTML = "Phải cập nhật lại giỏ hàng sau khi thay đổi!";
     }
   } else {
+    if (render_points.innerText == "Áp dụng") {
+      var point = 0;
+    } else {
+      var point = render_points.innerText.replace("đ", "").replace(",", "");
+
+    }
+
     var check = "?Buy";
     if (saveAddress.checked == true) {
       check += "&saveAddress";
@@ -237,9 +244,9 @@ function Buy() {
       "&note=" +
       noteIp.value +
       "&subTotal=" +
-      priceTem.innerText.replace(",", "") +
+      priceTem.innerText.replace(",", "").replace("đ", "") +
       "&point=" +
-      render_points.innerText.replace("đ", "").replace(",", "") +
+      point +
       "&shipping=" +
       priceShip.innerHTML.replace("đ", "").replace(",", "") +
       "&total=" +
